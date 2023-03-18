@@ -14,7 +14,7 @@ def project(request):
         if form.is_valid():
             input_text = form.cleaned_data['project_input']
             # Perform some processing on the input text
-            output_text = "here we can do something"
+            output_text = "here we can do somethin"
             return render(request, 'project.html', {'form': form, 'response': output_text})
     else:
         form = ProjectForm()
