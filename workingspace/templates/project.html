@@ -23,29 +23,50 @@
                     <a class="nav-link" aria-current="page" href="/">About Us</a>
                 </li>
             </ul>
-            <div class="registration container">
-                <button type="button" class="btn btn-outline-light me-4">Sign In</button>
-                <button type="button" class="btn btn-outline-light">Sign Up</button>
-            </div>
 
+            <div class="registration container">
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                       <button type="button" class="btn btn-outline-light me-4">
+                     <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
+                       </button>
+                  </li>
+                    {% else %}
+                 <button type="button" class="btn btn-outline-light me-4">
+                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign Up</a></button>
+                    <button type="button" class="btn btn-outline-light">
+                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a></button>
+                </div>
+            {% endif %}
 
         </div>
     </div>
 </nav>
 {% endblock %}
 {% block content %}
-
 <div class="container-fluid">
     <div class="row justify-content-center mt-5">
         <div class="col-lg-6">
+            {% if user.is_authenticated %}
             <form method="post" class="my-3">
                 {% csrf_token %}
                 <div class="input-group mb-3">
-                    <label class="input-group-text projin">{{ form.project_input.label }}:</label>
+                      <label class="input-group-text projin">{{ form.project_input.label }}:</label>
                     {{ form.project_input }}
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+             {% else %}
+                    <div class="alert alert-warning" role="alert">
+                  <h4 class="alert-heading">Please, login or sign up to write your request</h4>
+                  <hr>
+                        <div class="mt-3">
+                    <a href="{% url 'register\login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'register\sign-up' %}" class="btn btn-secondary">Sign Up</a>
+                  </div>
+                </div>
+
+            {% endif %}
         </div>
     </div>
     {% if response %}

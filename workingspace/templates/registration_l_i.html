@@ -23,10 +23,10 @@
                     </li>
                 </ul>
                 <div class="registration container">
-                   <button type="button" class="btn btn-outline-light me-4 active">
-                       <a style="text-decoration: none; color: #830404" href="{% url 'register\sign-up' %}"> Sign Up</a></button>
-                    <button type="button" class="btn btn-outline-light">
-                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a></button>
+                   <button type="button" class="btn btn-outline-light me-4">
+                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign Up</a></button>
+                   <button type="button" class="btn btn-outline-light active">
+                       <a style="text-decoration: none; color: #830404" href="{% url 'register\login' %}">Login</a></button>
                 </div>
 
 
@@ -39,19 +39,6 @@
     <form class="login-form" method="POST">
         {% csrf_token %}
         <div class="row">
-            <div class="col-md-12">
-                <div class="form-group position-relative">
-                    <label>Your Email <span class="text-danger">*</span></label>
-                    {{form.email}}
-                </div>
-                {% if form.email.errors %}
-                {% for error in form.email.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
             <div class="col-md-12">
                 <div class="form-group position-relative">
                     <label>Username <span class="text-danger">*</span></label>
@@ -68,10 +55,10 @@
             <div class="col-md-12">
                 <div class="form-group position-relative">
                     <label>Password <span class="text-danger">*</span></label>
-                    {{form.password1}}
+                    {{form.password}}
                 </div>
                 {% if form.password1.errors %}
-                {% for error in form.password1.errors %}
+                {% for error in form.password.errors %}
                 <div class="alert alert-danger">
                     <strong>{{ error|escape }}</strong>
                 </div>
@@ -79,38 +66,11 @@
                 {% endif %}
             </div>
             <div class="col-md-12">
-                <div class="form-group position-relative">
-                    <label>Confirm Password <span class="text-danger">*</span></label>
-                    {{form.password2}}
-                </div>
-                {% if form.password2.errors %}
-                {% for error in form.password2.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div class="custom-control">
-                        {{form.check}}<label>I Accept <a href="#" class="text-primary">Terms And Condition</a></label>
-                    </div>
-                    {% if form.check.errors %}
-                    {% for error in form.check.errors %}
-                    <div class="alert alert-danger">
-                        <strong>{{ error|escape }}</strong>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="col-md-12">
-                <button class="btn btn-primary w-100" type="submit">Register</button>
+                <button class="btn btn-primary w-100" type="submit">Login</button>
             </div>
             <div class="mx-auto">
-                <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a href="{% url 'register\login' %}"
-                                                                                                        class="text-dark font-weight-bold">Login</a></p>
+                <p class="mb-0 mt-3"><small class="text-dark mr-2">Don't have an account ?</small> <a href="{% url 'register\sign-up' %}"
+                                                                                                        class="text-dark font-weight-bold">Sign Up</a></p>
             </div>
         </div>
     </form>

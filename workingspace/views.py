@@ -6,6 +6,10 @@ from django.shortcuts import render, redirect
 from .forms import ProjectForm
 
 
+def about(request):
+    return render(request, 'about.html')
+
+
 def project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST)
@@ -42,3 +46,24 @@ def register_s_i(request):
         context = {'form': form}
         return render(request, 'registration_s_i.html', context)
 
+
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm
+
+
+class MyLoginView(LoginView):
+    template_name = 'registration_l_i.html'
+    form_class = AuthenticationForm
+    success_url = reverse_lazy('home')
+
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.views.generic import View
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('register\login')
