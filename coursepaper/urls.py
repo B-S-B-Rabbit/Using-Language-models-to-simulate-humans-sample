@@ -24,5 +24,6 @@ urlpatterns = [
     path('workingspace/', include('workingspace.urls')),
     path('', RedirectView.as_view(url='/workingspace/', permanent=True)),
 
+
 ]
 urlpatterns.extend(static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))

@@ -1,3 +1,8 @@
+from django.conf import settings
+from django.core.mail import send_mail
+
+
+
 def home(request):
     return render(request, 'index.html')
 
@@ -39,6 +44,11 @@ def register_s_i(request):
         form.save()
         user = form.cleaned_data.get('username')
         messages.success(request, 'Account was created for ' + user)
+        subject = 'Добро пожаловать на наш сайт!'
+        message = 'Уважаемый {},\nСпасибо за регистрацию на нашем сайте.'.format(user)
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [form.cleaned_data.get('email')]
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
         return redirect('home')
     else:
         print('Form is not valid')
