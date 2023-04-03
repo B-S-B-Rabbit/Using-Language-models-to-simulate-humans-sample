@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>My Profile</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Request Text</th>
+            <th>Request Date</th>
+            <th>Response Text</th>
+            <th>Response Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.request_text }}</td>
+            <td>{{ request.request_date }}</td>
+            <td>{{ request.response_text }}</td>
+            <td>{{ request.response_date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No requests found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

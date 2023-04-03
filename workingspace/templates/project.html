@@ -26,6 +26,11 @@
 
             <div class="registration container">
                 {% if user.is_authenticated %}
+                  <button type="button" class="btn btn-outline-light me-2">
+                <a class="nav-link" href="{% url 'profile' %}">
+                      <i class="fa fa-user"></i> Личный кабинет
+                    </a>
+                      </button>
                   <li class="nav-item">
                        <button type="button" class="btn btn-outline-light me-4">
                      <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
@@ -51,8 +56,8 @@
             <form method="post" class="my-3">
                 {% csrf_token %}
                 <div class="input-group mb-3">
-                      <label class="input-group-text projin">{{ form.project_input.label }}:</label>
-                    {{ form.project_input }}
+                      <label class="input-group-text projin">{{ form.request_text.label }}:</label>
+                    {{ form.request_text }}
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

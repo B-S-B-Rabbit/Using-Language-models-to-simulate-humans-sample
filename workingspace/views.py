@@ -2,7 +2,6 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 
-
 def home(request):
     return render(request, 'index.html')
 
@@ -19,8 +18,12 @@ def project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
-            input_text = form.cleaned_data['project_input']
+            input_text = form.cleaned_data['request_text']
             # Perform some processing on the input text
+            new_request = URequest(user=request.user,
+                                   request_text=form.cleaned_data['request_text'])
+            new_request.save()
+
             output_text = "here we can do somethin"
             return render(request, 'project.html', {'form': form, 'response': output_text})
     else:
@@ -77,3 +80,31 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('register\login')
+
+
+from django.shortcuts import render, redirect
+from django.views import View
+from django.contrib import messages
+
+from .forms import ProjectForm
+from .models import URequest
+
+
+class ProfileView(View):
+    def get(self, request):
+        form = ProjectForm()
+        user_requests = URequest.objects.filter(user=request.user)
+        return render(request, 'profile.html', {'form': form, 'requests': user_requests})
+
+    def post(self, request):
+        form = ProjectForm(request.POST)
+
+        if form.is_valid():
+            request_obj = form.save(commit=False)
+            request_obj.user = request.user
+            request_obj.save()
+            messages.success(request, 'Your request was successfully saved!')
+            return redirect('profile')
+
+        user_requests = URequest.objects.filter(user=request.user)
+        return render(request, 'profile.html', {'form': form, 'requests': user_requests})
