@@ -42,7 +42,7 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="{% url 'profile' %}"  class="nav-link active" aria-current="page">
+                    <a href="{% url 'profile' %}" class="nav-link text-white" aria-current="page">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#home"></use>
                         </svg>
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'profile-req' %}" class="nav-link text-white">
+                    <a href="{% url 'profile-req' %}" class="nav-link active text-white">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="{% url 'profile-req' %}"></use>
                         </svg>
@@ -79,35 +79,66 @@
             </div>
         </aside>
 
-       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  <div class="row justify-content-center mt-5">
-    <div class="col-lg-8 col-xl-6">
-      <div class="card shadow">
-        <div class="card-header bg-dark text-white">
-          <h3 class="card-title mb-0">User Profile</h3>
-        </div>
-        <div class="card-body">
-          <div class="row mb-3">
-            <div class="col-sm-4">
-              <strong>Name:</strong>
-            </div>
-            <div class="col-sm-8">
-              {{ user.username }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-sm-4">
-              <strong>Email:</strong>
-            </div>
-            <div class="col-sm-8">
-              {{ user.email }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <h2 class="mt-4" style="color:#13af9c;">My Requests</h2>
+    {% if page_obj.has_other_pages %}
+        <nav aria-label="...">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                {% endif %}
+                {% for i in page_obj.paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">{{ i }} <span class="visually-hidden">(current)</span></a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-disabled="true">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Request</th>
+            <th scope="col">Response</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for request in page_obj %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ request.request_date }}</td>
+                <td>{{ request.request_text }}</td>
+            <td>{{ request.response_text }}</td>
+
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">You have no requests.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </main>
+
         <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-lg-12 overflow-auto">

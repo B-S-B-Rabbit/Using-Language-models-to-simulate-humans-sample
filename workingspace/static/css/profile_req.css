@@ -1,0 +1,67 @@
+.img-wrap {!important
+  position: relative;
+}
+
+.img-wrap p {!important
+    font-family: Rubik Mono One,serif;
+    font-size: 8vw;
+    color: rgba(255, 255, 255, 0.34);
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Дополнительные стили для текста */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.nav-link:hover {
+  background-color: #555;
+}
+/* основной контейнер таблицы */
+/* Стили для таблицы */
+.table {
+  background-color: #e0e0e0; /* Цвет фона таблицы */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border: 1px solid #4d4949; /* Цвет границ ячеек таблицы */
+}
+
+.table th {
+  text-align: left;
+  background-color: #857b6f; /* Цвет фона заголовков таблицы */
+  color: #ffffff; /* Цвет текста заголовков таблицы */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #9494ad; /* Цвет фона четных строк таблицы */
+}
+
+.table tbody tr:hover {
+  background-color: #96b1c0; /* Цвет фона строки при наведении курсора мыши */
+}
+
+/* Стили для пагинации */
+.pagination {
+  margin: 1rem 0;
+  justify-content: center;
+}
+
+.pagination .page-item .page-link {
+  color: #2a0c0c; /* Цвет текста ссылок пагинации */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #5f668f; /* Цвет фона активной ссылки пагинации */
+  border-color: #2f1010; /* Цвет границ активной ссылки пагинации */
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #c4c4c4; /* Цвет текста отключенных ссылок пагинации */
+  pointer-events: none;
+  background-color: #7e7e7e;
+}

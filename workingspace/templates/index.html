@@ -21,7 +21,13 @@
                 </ul>
                <div class="registration container">
                 {% if user.is_authenticated %}
+
                   <li class="nav-item">
+                       <button type="button" class="btn btn-outline-light me-2">
+                <a class="nav-link" href="{% url 'profile' %}">
+                      <i class="fa fa-user"></i> Account
+                    </a>
+                      </button>
                        <button type="button" class="btn btn-outline-light me-4">
                      <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
                        </button>

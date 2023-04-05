@@ -15,17 +15,22 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Project</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">About Us</a>
-                </li>
+               <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'project' %}">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'about' %}">About Us</a>
+                    </li>
             </ul>
 
             <div class="registration container">
                 {% if user.is_authenticated %}
                   <li class="nav-item">
+                       <button type="button" class="btn btn-outline-light me-2">
+                <a class="nav-link" href="{% url 'profile' %}">
+                      <i class="fa fa-user"></i> Account
+                    </a>
+                      </button>
                        <button type="button" class="btn btn-outline-light me-4">
                      <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
                        </button>

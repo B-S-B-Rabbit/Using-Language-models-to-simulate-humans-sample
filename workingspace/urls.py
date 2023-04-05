@@ -9,6 +9,6 @@ urlpatterns = [
     path('register/login', MyLoginView.as_view(template_name='registration_l_i.html'), name='register\login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('about/', views.about, name='about'),
-    path('profile/', ProfileView.as_view(), name='profile'),
-
+    path('profile/', views.profile, name='profile'),
+    path('profile/requests', ProfileView.as_view(), name='profile-req'),
 ]

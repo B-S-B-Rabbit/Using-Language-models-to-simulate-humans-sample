@@ -7,7 +7,6 @@ class URequest(models.Model):
     request_text = models.TextField()
     request_date = models.DateTimeField(auto_now_add=True)
     response_text = models.TextField(blank=True, null=True)
-    response_date = models.DateTimeField(blank=True, null=True)
 
     objects = models.Manager()
 

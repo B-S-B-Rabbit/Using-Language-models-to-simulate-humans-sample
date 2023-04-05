@@ -24,17 +24,23 @@ def project(request):
                                    request_text=form.cleaned_data['request_text'])
             new_request.save()
 
-            output_text = "here we can do somethin"
+            output_text = "here we can do something"
+            new_request.response_text = output_text
+            new_request.save()
+
             return render(request, 'project.html', {'form': form, 'response': output_text})
     else:
         form = ProjectForm()
     return render(request, 'project.html', {'form': form})
 
 
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm
 
+
+from django.contrib.auth import authenticate, login
 
 def register_s_i(request):
     if request.method == 'GET':
@@ -43,21 +49,24 @@ def register_s_i(request):
         return render(request, 'registration_s_i.html', context)
     elif request.method == 'POST':
         form = RegisterForm(request.POST)
-    if form.is_valid():
-        form.save()
-        user = form.cleaned_data.get('username')
-        messages.success(request, 'Account was created for ' + user)
-        subject = 'Добро пожаловать на наш сайт!'
-        message = 'Уважаемый {},\nСпасибо за регистрацию на нашем сайте.'.format(user)
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [form.cleaned_data.get('email')]
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
-        return redirect('home')
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            messages.success(request, 'Account was created for ' + username)
+            subject = 'Добро пожаловать на наш сайт!'
+            message = 'Уважаемый {},\nСпасибо за регистрацию на нашем сайте.'.format(username)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [form.cleaned_data.get('email')]
+            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+            return redirect('home')
     else:
-        print('Form is not valid')
         messages.error(request, 'Error Processing Your Request')
-        context = {'form': form}
-        return render(request, 'registration_s_i.html', context)
+    context = {'form': form}
+    return render(request, 'registration_s_i.html', context)
+
 
 
 from django.contrib.auth.views import LoginView
@@ -88,23 +97,19 @@ from django.contrib import messages
 
 from .forms import ProjectForm
 from .models import URequest
+from django.core.paginator import Paginator
 
 
 class ProfileView(View):
     def get(self, request):
         form = ProjectForm()
         user_requests = URequest.objects.filter(user=request.user)
-        return render(request, 'profile.html', {'form': form, 'requests': user_requests})
+        paginator = Paginator(user_requests, 10)  # 10 запросов на страницу
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'profile_requests.html', {'form': form, 'page_obj': page_obj})
 
-    def post(self, request):
-        form = ProjectForm(request.POST)
 
-        if form.is_valid():
-            request_obj = form.save(commit=False)
-            request_obj.user = request.user
-            request_obj.save()
-            messages.success(request, 'Your request was successfully saved!')
-            return redirect('profile')
 
-        user_requests = URequest.objects.filter(user=request.user)
-        return render(request, 'profile.html', {'form': form, 'requests': user_requests})
+def profile(request):
+    return render(request, 'profile.html')
