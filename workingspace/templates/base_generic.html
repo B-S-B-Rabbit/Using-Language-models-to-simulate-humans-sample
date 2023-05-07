@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-     {% block title %} <title>Document</title> {% endblock %}
+    {% block title %} <title>Document</title> {% endblock %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -27,36 +27,36 @@
 <footer class="footer mt-auto">
 
     {% block foot %}
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12 mb-6 mb-lg-0">
-        <h5>Контакты</h5>
-        <ul class="list-unstyled mb-0">
-          <li>Адрес: г. Москва, ул. Пушкина, д. 25</li>
-          <li>Телефон: +7 (123) 456-78-90</li>
-          <li>Email: info@example.com</li>
-        </ul>
-      </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 mb-6 mb-lg-0">
-        <p>Подпишитесь на нашу рассылку новостей и получайте последние обновления прямо в свой почтовый ящик.</p>
-        <form>
-          <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="subscribe">
-            <button class="btn btn-primary" type="submit" id="subscribe">Подписаться</button>
-          </div>
-        </form>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-6 mb-lg-0 mt-3">
+                <h5 style="color: #d5d20c">Contacts</h5>
+                <ul style="padding:6px; border: solid #000000; color: #000000" class="list-unstyled mb-0">
+                    <li>Address: N.Novgorod, HSE University</li>
+                    <li>Email: testingmaikl111@gmail.com</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 mb-6 mb-lg-0">
+                <p style="color: #d7b908">Subscribe to our newsletter and get the latest updates directly to your inbox
+                    box.</p>
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                               aria-describedby="subscribe">
+                        <button class="btn btn-primary disabled" type="submit" id="subscribe">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
 
 {% endblock %}
 </footer>
 
 
-
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 </html>

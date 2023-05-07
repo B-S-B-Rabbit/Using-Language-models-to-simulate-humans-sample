@@ -59,5 +59,5 @@ class LoginForm(AuthenticationForm):
 
 class ProjectForm(forms.Form):
     request_text = forms.CharField(help_text="Enter something", max_length=100,
-                                    widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'project_input'}))
+                                   widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'project_input'}))
     response_text = forms.CharField(widget=forms.Textarea, required=False)

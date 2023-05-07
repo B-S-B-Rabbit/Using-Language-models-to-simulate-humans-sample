@@ -1,13 +1,21 @@
 from django.conf import settings
 from django.core.mail import send_mail
+from .forms import RegisterForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
+from django.shortcuts import render, redirect
+from django.views import View
+from django.contrib import messages
+from .forms import ProjectForm
+from .models import URequest
+from django.core.paginator import Paginator
 
 
 def home(request):
     return render(request, 'index.html')
-
-
-from django.shortcuts import render, redirect
-from .forms import ProjectForm
 
 
 def about(request):
@@ -24,7 +32,7 @@ def project(request):
                                    request_text=form.cleaned_data['request_text'])
             new_request.save()
 
-            output_text = "here we can do something"
+            output_text = "here we can do somethinghere we can do somethinghere "
             new_request.response_text = output_text
             new_request.save()
 
@@ -33,14 +41,6 @@ def project(request):
         form = ProjectForm()
     return render(request, 'project.html', {'form': form})
 
-
-
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import RegisterForm
-
-
-from django.contrib.auth import authenticate, login
 
 def register_s_i(request):
     if request.method == 'GET':
@@ -68,21 +68,10 @@ def register_s_i(request):
     return render(request, 'registration_s_i.html', context)
 
 
-
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
-from django.contrib.auth.forms import AuthenticationForm
-
-
 class MyLoginView(LoginView):
     template_name = 'registration_l_i.html'
     form_class = AuthenticationForm
     success_url = reverse_lazy('home')
-
-
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.views.generic import View
 
 
 class LogoutView(View):
@@ -91,24 +80,14 @@ class LogoutView(View):
         return redirect('register\login')
 
 
-from django.shortcuts import render, redirect
-from django.views import View
-from django.contrib import messages
-
-from .forms import ProjectForm
-from .models import URequest
-from django.core.paginator import Paginator
-
-
 class ProfileView(View):
     def get(self, request):
         form = ProjectForm()
         user_requests = URequest.objects.filter(user=request.user)
-        paginator = Paginator(user_requests, 10)  # 10 запросов на страницу
+        paginator = Paginator(user_requests, 5)  # 10 запросов на страницу
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         return render(request, 'profile_requests.html', {'form': form, 'page_obj': page_obj})
-
 
 
 def profile(request):

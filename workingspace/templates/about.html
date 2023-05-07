@@ -15,32 +15,35 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-               <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'project' %}">Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'about' %}">About Us</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'project' %}">Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About Us</a>
+                </li>
             </ul>
 
             <div class="registration container">
                 {% if user.is_authenticated %}
-                  <li class="nav-item">
-                       <button type="button" class="btn btn-outline-light me-2">
-                <a class="nav-link" href="{% url 'profile' %}">
-                      <i class="fa fa-user"></i> Account
-                    </a>
-                      </button>
-                       <button type="button" class="btn btn-outline-light me-4">
-                     <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
-                       </button>
-                  </li>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-light me-2">
+                            <a style="text-decoration: none; color: aqua" href="{% url 'profile' %}">
+                                Account</a>
+                        </button>
+                        <button type="button" class="btn btn-outline-light">
+                            <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
+                        </button>
+                    </li>
                     {% else %}
-                 <button type="button" class="btn btn-outline-light me-4">
-                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign Up</a></button>
+                    <button type="button" class="btn btn-outline-light me-4">
+                        <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign
+                            Up</a></button>
                     <button type="button" class="btn btn-outline-light">
-                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a></button>
-                </div>
+                        <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a>
+                    </button>
+                </ul>
+            </div>
             {% endif %}
 
         </div>
@@ -58,10 +61,10 @@
         </div>
         <div class="col-md-6 my-auto">
             <h2 class="mb-4">Our Project</h2>
-            <p class="lead mb-5">This project was developed as a coursework by two computer science students: Andrew and
-                Ilya. They decided to perform a task as a course work, which consisted in implementing fine-tuning of
-                the neural network on specific data that could simulate human behavior and providing the opportunity to
-                use this by creating web applications based on the Django framework.</p>
+            <p class="lead mb-5">This project was developed as a coursework by two HSE students. It consists in
+                implementing the fine-tuning of the GPT2 neural network based on Amazon product reviews and allows the
+                user to get certain information on request about a specific product by its ASIN. The Django framework
+                was used for the web shell of this project.</p>
             <p class="lead mb-5">The goal of this project is to provide a platform for users to ask a question and get
                 an answer from the neural network.</p>
         </div>
@@ -70,14 +73,16 @@
     <div class="row py-5 align-items-center">
         <div class="col-md-6 my-auto">
             <h2 class="mb-4">Our Team</h2>
-            <p class="lead mb-5">Ilya and Andrew are both second-year computer science students at HSE University. They
-                have been working together on various projects since their first year, and have developed a strong
-                partnership based on their complementary skills and shared passion for programming.</p>
-            <p class="lead mb-5">Andrew is responsible for the web-development of this project, including the HTML and
-                CSS, Django models, views, and templates. He enjoys designing user interfaces and making them visually appealing and easy to
-                use.</p>
-            <p class="lead mb-5">Ilya is responsible for the fine-tuning part of this project including the collection
-                of databases and using them to train neural network.</p>
+            <p class="lead mb-5">Our names are Ilya and Andrey. We are studying in the second year of the University
+                Higher School of Economics in the direction of Software Engineering. We have already worked together on
+                various projects within the university, but this is our first experience. In this project, we had a lot
+                of difficulties getting a server to train a neural network, so the final product did not come out the
+                way it was intended, but we hope that it will still be able to meet the necessary requirements.</p>
+            <p class="lead mb-5">In this project, in addition to general work, Andrey was responsible for creating a web
+                shell for course work, mainly, including the HTML and
+                CSS, Django models, views, and templates.</p>
+            <p class="lead mb-5">Ilya was mainly responsible for training neural networks, working with datasets and
+                other general work. This included working with libraries such as tensorflow and pytorch</p>
         </div>
         <div class="col-md-6 d-flex justify-content-center">
             <img src="{% static 'images/we.jpg' %}" alt="Our Team" class="img-fluid about-img">
