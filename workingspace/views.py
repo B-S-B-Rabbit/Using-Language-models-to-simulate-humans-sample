@@ -83,7 +83,7 @@ class LogoutView(View):
 class ProfileView(View):
     def get(self, request):
         form = ProjectForm()
-        user_requests = URequest.objects.filter(user=request.user)
+        user_requests = URequest.objects.filter(user=request.user).order_by('-request_date')
         paginator = Paginator(user_requests, 5)  # 10 запросов на страницу
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)

@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block navbar %}
- <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,26 +19,28 @@
                         <a class="nav-link" aria-current="page" href="{% url 'about' %}">About Us</a>
                     </li>
                 </ul>
-               <div class="registration container">
-                {% if user.is_authenticated %}
+                <div class="registration container">
+                    {% if user.is_authenticated %}
 
-                  <li class="nav-item">
-                       <button type="button" class="btn btn-outline-light me-2">
-                <a class="nav-link" href="{% url 'profile' %}">
-                      <i class="fa fa-user"></i> Account
-                    </a>
-                      </button>
-                       <button type="button" class="btn btn-outline-light me-4">
-                     <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
-                       </button>
-                  </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-outline-light me-2">
+                                <a class="nav-link" href="{% url 'profile' %}">
+                                    <i class="fa fa-user"></i> Account
+                                </a>
+                            </button>
+                            <button type="button" class="btn btn-outline-light me-4">
+                                <a style="text-decoration: none; color: #bd1616" href="{% url 'logout' %}">Logout</a>
+                            </button>
+                        </li>
                     {% else %}
-                 <button type="button" class="btn btn-outline-light me-4">
-                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign Up</a></button>
-                    <button type="button" class="btn btn-outline-light">
-                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a></button>
-                </div>
-            {% endif %}
+                        <button type="button" class="btn btn-outline-light me-4">
+                            <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign
+                                Up</a></button>
+                        <button type="button" class="btn btn-outline-light">
+                            <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a>
+                        </button>
+                        </div>
+                    {% endif %}
 
 
             </div>
@@ -46,17 +48,17 @@
     </nav>
 {% endblock %}
 {% block content %}
-<div class="container-fluid p-0">
+    <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-lg-12 overflow-auto">
-              <div class="img-wrap">
-                 <img src="../static/images/back_n.jpg" class="img-fluid" alt="...">
-                <p class="text-center">Future<br> is<br> here</p>
-             </div>
+                <div class="img-wrap">
+                    <img src="../static/images/back_n.jpg" class="img-fluid" alt="...">
+                    <p class="text-center">Future<br> is<br> here</p>
+                </div>
             </div>
 
         </div>
-</div>
+    </div>
 
 
 {% endblock %}

@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 {% block sty %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css\registr.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\registr.css' %}">
 {% endblock %}
 {% block navbar %}
- <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,12 @@
                     </li>
                 </ul>
                 <div class="registration container">
-                   <button type="button" class="btn btn-outline-light me-4 active">
-                       <a style="text-decoration: none; color: #830404" href="{% url 'register\sign-up' %}"> Sign Up</a></button>
+                    <button type="button" class="btn btn-outline-light me-4 active">
+                        <a style="text-decoration: none; color: #830404" href="{% url 'register\sign-up' %}"> Sign
+                            Up</a></button>
                     <button type="button" class="btn btn-outline-light">
-                       <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a></button>
+                        <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a>
+                    </button>
                 </div>
 
 
@@ -35,84 +37,86 @@
     </nav>
 {% endblock %}
 {% block content %}
-<div class="container d-flex justify-content-center align-items-center vh-100">
-    <form class="login-form" method="POST">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group position-relative">
-                    <label>Your Email <span class="text-danger">*</span></label>
-                    {{form.email}}
-                </div>
-                {% if form.email.errors %}
-                {% for error in form.email.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-md-12">
-                <div class="form-group position-relative">
-                    <label>Username <span class="text-danger">*</span></label>
-                    {{form.username}}
-                </div>
-                {% if form.username.errors %}
-                {% for error in form.username.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-md-12">
-                <div class="form-group position-relative">
-                    <label>Password <span class="text-danger">*</span></label>
-                    {{form.password1}}
-                </div>
-                {% if form.password1.errors %}
-                {% for error in form.password1.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-md-12">
-                <div class="form-group position-relative">
-                    <label>Confirm Password <span class="text-danger">*</span></label>
-                    {{form.password2}}
-                </div>
-                {% if form.password2.errors %}
-                {% for error in form.password2.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div class="custom-control">
-                        {{form.check}}<label>I Accept <a href="#" class="text-primary">Terms And Condition</a></label>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group position-relative">
+                        <label>Your Email <span class="text-danger">*</span></label>
+                        {{ form.email }}
                     </div>
-                    {% if form.check.errors %}
-                    {% for error in form.check.errors %}
-                    <div class="alert alert-danger">
-                        <strong>{{ error|escape }}</strong>
-                    </div>
-                    {% endfor %}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
                     {% endif %}
                 </div>
+                <div class="col-md-12">
+                    <div class="form-group position-relative">
+                        <label>Username <span class="text-danger">*</span></label>
+                        {{ form.username }}
+                    </div>
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group position-relative">
+                        <label>Password <span class="text-danger">*</span></label>
+                        {{ form.password1 }}
+                    </div>
+                    {% if form.password1.errors %}
+                        {% for error in form.password1.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group position-relative">
+                        <label>Confirm Password <span class="text-danger">*</span></label>
+                        {{ form.password2 }}
+                    </div>
+                    {% if form.password2.errors %}
+                        {% for error in form.password2.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="custom-control">
+                            {{ form.check }}<label>I Accept <a href="#" class="text-primary">Terms And
+                            Condition</a></label>
+                        </div>
+                        {% if form.check.errors %}
+                            {% for error in form.check.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn btn-primary w-100" type="submit">Register</button>
+                </div>
+                <div class="mx-auto">
+                    <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a
+                            href="{% url 'register\login' %}"
+                            class="text-dark font-weight-bold">Login</a></p>
+                </div>
             </div>
-            <div class="col-md-12">
-                <button class="btn btn-primary w-100" type="submit">Register</button>
-            </div>
-            <div class="mx-auto">
-                <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a href="{% url 'register\login' %}"
-                                                                                                        class="text-dark font-weight-bold">Login</a></p>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 {% endblock %}

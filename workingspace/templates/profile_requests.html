@@ -35,7 +35,7 @@
         <aside class="col-md-3 col-lg-2 d-flex flex-column flex-shrink-0 p-3 bg-dark text-white mt-4" style="flex-grow: 1;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <svg class="bi me-2" width="40" height="32">
-                    <use xlink:href="#bootstrap"></use>
+                    <use href="#bootstrap"></use>
                 </svg>
                 <span class="fs-4">Account</span>
             </a>
@@ -44,7 +44,7 @@
                 <li class="nav-item">
                     <a href="{% url 'profile' %}" class="nav-link text-white" aria-current="page">
                         <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#home"></use>
+                            <use href="#home"></use>
                         </svg>
                         My profile
                     </a>
@@ -52,7 +52,7 @@
                 <li class="nav-item">
                     <a href="{% url 'profile-req' %}" class="nav-link active text-white">
                         <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="{% url 'profile-req' %}"></use>
+                            <use href="{% url 'profile-req' %}"></use>
                         </svg>
                         My requests
                     </a>
@@ -60,7 +60,7 @@
                 <li class="nav-item">
                     <a href="{% url 'project' %}" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="{% url 'project' %}"></use>
+                            <use href="{% url 'project' %}"></use>
                         </svg>
                         New request
                     </a>
@@ -70,7 +70,7 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <img src="{% static 'images/ic4.png' %}" alt="" width="32" height="32" class="rounded-circle me-2">
                     <strong> {{ user.username }}</strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
