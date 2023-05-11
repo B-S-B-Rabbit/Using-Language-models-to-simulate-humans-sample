@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Michroma&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik Mono One&display=swap');
+body
+
+{
+    font-family: Michroma,serif;
+    background: linear-gradient(90deg, #383232 0%, #585b58 100%);
+}
+.nav-link {
+    color: #0bdabb;
+}
+
+.navbar-nav .nav-link.active {
+    color: #b2acac;
+}
+
+.navbar-brand img {
+    width: 40px;
+}
+
+.navbar-toggler {
+    background-color: #d9d5d5;
+}
+
+.registration.container {
+    display: flex;
+    justify-content: right;
+    margin-right: 0;
+}
+.container-fluid.w_p {
+    padding: 0;
+}
+.img-wrap {
+  position: relative;
+}
+
+.img-wrap p {
+    font-family: Rubik Mono One,serif;
+    font-size: 10vw;
+    color: white;
+    position: absolute;
+    top:3rem;
+    left:0;
+    text-align: center;
+    width: 100%;
+    max-height: 1080px;
+}
+
+.footer {
+  background: linear-gradient(to bottom right, #4f4a4a, #2f2f2f);
+  color: rgba(14, 148, 137, 0.74);
+  padding: 20px 40px;
+}
+
+.footer h5 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 5px;
+}
+
+.footer input[type="email"] {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 8px;
+  width: 70%;
+  color: #4d0202;
+  margin-right: 10px;
+}
+
+.footer button {
+  background-color: green;
+  border: none;
+  border-radius: 0;
+  color: white;
+  padding: 8px 16px;
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    text-align: center;
+  }
+
+  .footer h5 {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .footer input[type="email"] {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .footer button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
