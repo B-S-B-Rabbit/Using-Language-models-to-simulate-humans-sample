@@ -16,3 +16,5 @@ WORKDIR /ML_app
 ADD . /ML_app/
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
+
+EXPOSE 8000
