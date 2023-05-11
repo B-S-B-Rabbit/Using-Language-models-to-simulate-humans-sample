@@ -81,4 +81,5 @@ virtualenv==20.17.1
 virtualenvwrapper-win==1.2.7
 Werkzeug==2.2.2
 wrapt==1.15.0
+whitenoise
 zipp==3.8.1
