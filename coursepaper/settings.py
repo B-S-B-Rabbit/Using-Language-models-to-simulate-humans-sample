@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1!#j##ltf(o^xagegw+dxe70(@l#(a$+2%reg#d*s4w=nyyk^i
 DEBUG = False
 
 ALLOWED_HOSTS = ['shsai-mysteryknight113.b4a.run']
-CSRF_TRUSTED_ORIGINS = ['http://shsai-mysteryknight113.b4a.run']
+CSRF_TRUSTED_ORIGINS = ['https://shsai-mysteryknight113.b4a.run']
 
 
 # Application definition
