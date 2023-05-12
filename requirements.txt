@@ -72,7 +72,9 @@ sniffio==1.3.0
 sqlparse==0.4.3
 toml==0.10.2
 tomli==2.0.1
+torch
 tornado==6.3.1
+transformers
 typed-ast
 typing_extensions==4.5.0
 tzdata==2022.7

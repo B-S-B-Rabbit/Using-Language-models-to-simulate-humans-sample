@@ -12,6 +12,9 @@ from django.contrib import messages
 from .forms import ProjectForm
 from .models import URequest
 from django.core.paginator import Paginator
+from .API_class import API
+
+res = API()
 
 
 def home(request):
@@ -31,8 +34,7 @@ def project(request):
             new_request = URequest(user=request.user,
                                    request_text=form.cleaned_data['request_text'])
             new_request.save()
-
-            output_text = "here we can do somethinghere we can do somethinghere "
+            output_text = res.get_bot_answer(input_text)
             new_request.response_text = output_text
             new_request.save()
 
@@ -57,7 +59,7 @@ def register_s_i(request):
             login(request, user)
             messages.success(request, 'Account was created for ' + username)
             subject = 'Добро пожаловать на наш сайт!'
-            message = 'Уважаемый {},\nСпасибо за регистрацию на нашем сайте.'.format(username)
+            message = 'Уважаемый пользователь {},\nСпасибо за регистрацию на нашем сайте.'.format(username)
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [form.cleaned_data.get('email')]
             send_mail(subject, message, from_email, recipient_list, fail_silently=False)
