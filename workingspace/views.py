@@ -30,14 +30,12 @@ def project(request):
         form = ProjectForm(request.POST)
         if form.is_valid():
             input_text = form.cleaned_data['request_text']
-            # Perform some processing on the input text
             new_request = URequest(user=request.user,
                                    request_text=form.cleaned_data['request_text'])
             new_request.save()
             output_text = res.get_bot_answer(input_text)
             new_request.response_text = output_text
             new_request.save()
-
             return render(request, 'project.html', {'form': form, 'response': output_text})
     else:
         form = ProjectForm()

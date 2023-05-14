@@ -12,3 +12,5 @@ class URequest(models.Model):
 
     def __str__(self):
         return self.request_text
+
+

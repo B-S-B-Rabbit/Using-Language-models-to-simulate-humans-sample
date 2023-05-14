@@ -66,7 +66,6 @@ class ProjectViewTestCase(TestCase):
             email='testuser@example.com',
             password='testpass'
         )
-        # Login the user
         self.client.force_login(user)
         data = {
             'request_text': 'test request text'
