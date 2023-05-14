@@ -7,3 +7,5 @@ services:
       - ./static:/app/static
     network_mode: "host"
     restart: unless-stopped
+    ports:
+      - "8000:8000"
