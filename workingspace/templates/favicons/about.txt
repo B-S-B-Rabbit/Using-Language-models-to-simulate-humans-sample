@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Baumans
+- Font Author: http://scripts.sil.org/OFL
+- Font Source: http://fonts.gstatic.com/s/baumans/v17/-W_-XJj9QyTd3QfpR_oyaksqY5Q.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
