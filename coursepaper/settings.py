@@ -24,8 +24,8 @@ SECRET_KEY = 'django-insecure-1!#j##ltf(o^xagegw+dxe70(@l#(a$+2%reg#d*s4w=nyyk^i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['http://simulate-ai.ru']
+ALLOWED_HOSTS = ['simulate-ai.ru', 'www.simulate-ai.ru','localhost']
+CSRF_TRUSTED_ORIGINS = ['https://simulate-ai.ru']
 
 
 # Application definition
