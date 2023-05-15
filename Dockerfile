@@ -7,7 +7,7 @@ WORKDIR /ML_app
 ADD  . /ML_app/
 RUN pip3 install -r requirements.txt
 RUN ["chmod", "+x", "docker-entrypoint.sh"]
-ENTRYPOINT [ "./docker-entrypoint.sh" ]
+CMD [ "./docker-entrypoint.sh" ]
 #FROM python:3.8
 #
 ## create root directory for our project in the container
