@@ -1,20 +1,37 @@
+"""
+This module contains Django forms used in the web application.
+
+"""
+
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
 
 
 class RequestForm(forms.Form):
+    """
+    Form for handling requests.
+
+    Contains fields for the request text and response text.
+
+    """
     request_text = forms.CharField(widget=forms.Textarea)
     response_text = forms.CharField(widget=forms.Textarea, required=False)
 
 
 class RegisterForm(UserCreationForm):
+    """
+    Form for user registration.
+
+    Inherits from UserCreationForm and adds additional fields for email and a check field.
+
+    """
     email = forms.EmailField(
         max_length=100,
         required=True,
         help_text='Enter Email Address',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'}), )
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+    )
     username = forms.CharField(
         max_length=200,
         required=True,
@@ -39,6 +56,12 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    """
+    Form for user login.
+
+    Inherits from AuthenticationForm and adds an additional field for username.
+
+    """
     username = forms.CharField(
         max_length=200,
         required=True,
@@ -58,6 +81,15 @@ class LoginForm(AuthenticationForm):
 
 
 class ProjectForm(forms.Form):
-    request_text = forms.CharField(help_text="Enter something", max_length=100,
-                                   widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'project_input'}))
+    """
+    Form for handling project requests.
+
+    Contains fields for the request text and response text.
+
+    """
+    request_text = forms.CharField(
+        help_text="Enter something",
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'project_input'}),
+    )
     response_text = forms.CharField(widget=forms.Textarea, required=False)

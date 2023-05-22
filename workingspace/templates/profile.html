@@ -1,9 +1,21 @@
+<!--
+This HTML template extends the "base_generic.html" template and overrides the blocks for styling (sty), navbar, and content.
+
+Template Structure:
+- Extends the "base_generic.html" template.
+- Overrides the blocks for styling (sty), navbar, and content.
+-->
+
 {% extends "base_generic.html" %}
+
 {% block sty %}
+    <!-- Styling -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css\profile_req.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile_req.css' %}">
 {% endblock %}
+
 {% block navbar %}
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -22,18 +34,18 @@
                         <a class="nav-link" aria-current="page" href="{% url 'about' %}">About Us</a>
                     </li>
                 </ul>
-
-
             </div>
         </div>
     </nav>
 {% endblock %}
 
 {% block content %}
+    <!-- Content Section -->
     <div class="container-fluid" style="min-height: 100vh;">
         <div class="row">
             <aside class="col-md-3 col-lg-2 d-flex flex-column flex-shrink-0 p-3 bg-dark text-white mt-4"
                    style="flex-grow: 1;">
+                <!-- Sidebar -->
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <svg class="bi me-2" width="40" height="32">
                         <use href="#bootstrap"></use>
@@ -83,6 +95,7 @@
             </aside>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Profile Section -->
                 <div class="row justify-content-center mt-5">
                     <div class="col-lg-8 col-xl-6">
                         <div class="card shadow">
@@ -119,10 +132,8 @@
                             <p class="text-center">The time<br>of<br>opportunities</p>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div>
 {% endblock %}

@@ -1,6 +1,16 @@
+<!--
+This HTML template extends the "base_generic.html" template and overrides the blocks for the navbar and content.
+
+Template Structure:
+- Extends the "base_generic.html" template.
+- Overrides the blocks for the navbar and content.
+
+-->
+
 {% extends "base_generic.html" %}
 
 {% block navbar %}
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -21,7 +31,7 @@
                 </ul>
                 <div class="registration container">
                     {% if user.is_authenticated %}
-
+                        <!-- User is authenticated -->
                         <li class="nav-item">
                             <button type="button" class="btn btn-outline-light me-2">
                                 <a class="nav-link" href="{% url 'profile' %}">
@@ -33,21 +43,23 @@
                             </button>
                         </li>
                     {% else %}
+                        <!-- User is not authenticated -->
                         <button type="button" class="btn btn-outline-light me-4">
                             <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}"> Sign
                                 Up</a></button>
                         <button type="button" class="btn btn-outline-light">
                             <a style="text-decoration: none; color: #bd1616" href="{% url 'register\login' %}">Login</a>
                         </button>
-                        </div>
+                    </div>
                     {% endif %}
-
-
+                </div>
             </div>
         </div>
     </nav>
 {% endblock %}
+
 {% block content %}
+    <!-- Content Section -->
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-lg-12 overflow-auto">
@@ -56,10 +68,6 @@
                     <p class="text-center">Future<br> is<br> here</p>
                 </div>
             </div>
-
         </div>
     </div>
-
-
 {% endblock %}
-

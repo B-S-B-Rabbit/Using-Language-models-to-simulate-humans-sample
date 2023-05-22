@@ -1,31 +1,51 @@
+<!--
+This HTML template represents the "About Us" page of a website.
+
+Template Structure:
+- Extends the "base_generic.html" template.
+- Defines blocks for styling, navbar, and content.
+- Displays a navbar with links to different pages.
+- Displays information about the project and the team.
+
+-->
+
 {% extends "base_generic.html" %}
+
 {% block sty %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css\about.css' %}">
 {% endblock %}
+
 {% block navbar %}
+    <!-- Navbar section -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
+            <!-- Navbar toggler button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    <!-- Home link -->
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
+                    <!-- Project link -->
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{% url 'project' %}">Project</a>
                     </li>
+                    <!-- About Us link (active) -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About Us</a>
                     </li>
                 </ul>
 
                 <div class="registration container">
+                    <!-- Check if user is authenticated -->
                     {% if user.is_authenticated %}
                         <ul class="navbar-nav">
+                            <!-- Account and Logout buttons -->
                             <li class="nav-item">
                                 <button type="button" class="btn btn-outline-light me-2">
                                     <a style="text-decoration: none; color: aqua" href="{% url 'profile' %}">
@@ -37,10 +57,11 @@
                                 </button>
                             </li>
                             {% else %}
+                            <!-- Sign Up and Login buttons -->
                             <button type="button" class="btn btn-outline-light me-4">
-                                <a style="text-decoration: none; color: #bd1616" href="{% url 'register\sign-up' %}">
-                                    Sign
-                                    Up</a></button>
+                                <a style="text-decoration: none; color: #bd1616"
+                                   href="{% url 'register\sign-up' %}">Sign Up</a>
+                            </button>
                             <button type="button" class="btn btn-outline-light">
                                 <a style="text-decoration: none; color: #bd1616"
                                    href="{% url 'register\login' %}">Login</a>
@@ -48,16 +69,18 @@
                         </ul>
                         </div>
                     {% endif %}
-
             </div>
         </div>
     </nav>
 {% endblock %}
+
 {% block content %}
+    <!-- Main content section -->
     <div class="container py-5">
         <h1 class="text-center">About Us</h1>
         <hr>
 
+        <!-- Project section -->
         <div class="row py-5 align-items-center">
             <div class="col-md-6 mt-2 d-flex justify-content-center">
                 <img src="{% static 'images/loon-image-high.jpg' %}" alt="About Us" class="img-fluid about-img">
@@ -69,11 +92,11 @@
                     about a question and allows the user to receive a forecast answering a question from a given pool
                     upon request. The Django framework was used for the web shell of this project.</p>
                 <p class="lead mb-5">The goal of this project is to provide a platform for users to ask a question and
-                    get
-                    an answer from the neural network.</p>
+                    get an answer from the neural network.</p>
             </div>
         </div>
 
+        <!-- Team section -->
         <div class="row py-5 align-items-center">
             <div class="col-md-6 my-auto">
                 <h2 class="mb-4">Our Team</h2>
@@ -94,8 +117,5 @@
                 <img src="{% static 'images/we.jpg' %}" alt="Our Team" class="img-fluid about-img">
             </div>
         </div>
-
     </div>
-
-
 {% endblock %}
